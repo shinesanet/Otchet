@@ -210,14 +210,14 @@ def main():
                 y=monthly_data['Всего начали'],
                 name='Начали обучение',
                 line=dict(color='#3498db', width=3)
-            )
+            )  # Закрывающая скобка для add_trace
             
             fig3.add_trace(go.Scatter(
                 x=monthly_data['Месяц'],
                 y=monthly_data['Завершили'],
                 name='Завершили обучение',
                 line=dict(color='#2ecc71', width=3)
-            )
+            )  # Закрывающая скобка для add_trace
             
             fig3.add_trace(go.Scatter(
                 x=monthly_data['Месяц'],
@@ -225,7 +225,7 @@ def main():
                 name='Процент завершения',
                 line=dict(color='#f39c12', width=3),
                 yaxis='y2'
-            )
+            )  # Закрывающая скобка для add_trace
             
             fig3.update_layout(
                 yaxis=dict(title='Количество сотрудников'),
