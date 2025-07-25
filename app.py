@@ -250,6 +250,7 @@ def main():
             
             # Отображаем график
             st.plotly_chart(fig3, use_container_width=True)
+            
         # Визуализация 4: Посещение МПП (для коммерческого департамента)
         if selected_dept == 'Коммерческий департамент' or selected_dept == 'Все':
             st.subheader("Посещение МПП (Коммерческий департамент)")
