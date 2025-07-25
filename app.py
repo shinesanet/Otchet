@@ -203,38 +203,53 @@ def main():
             monthly_data.columns = ['Месяц', 'Всего начали', 'Завершили']
             monthly_data['Процент завершения'] = monthly_data['Завершили'] / monthly_data['Всего начали'] * 100
             
+            # Создаём фигуру
             fig3 = go.Figure()
             
-            fig3.add_trace(go.Scatter(
-                x=monthly_data['Месяц'],
-                y=monthly_data['Всего начали'],
-                name='Начали обучение',
-                line=dict(color='#3498db', width=3)
-            )  # Закрывающая скобка для add_trace
+            # Первый график - Начали обучение
+            fig3.add_trace(
+                go.Scatter(
+                    x=monthly_data['Месяц'],
+                    y=monthly_data['Всего начали'],
+                    name='Начали обучение',
+                    line=dict(color='#3498db', width=3)
+                )
+            )
             
-            fig3.add_trace(go.Scatter(
-                x=monthly_data['Месяц'],
-                y=monthly_data['Завершили'],
-                name='Завершили обучение',
-                line=dict(color='#2ecc71', width=3)
-            )  # Закрывающая скобка для add_trace
+            # Второй график - Завершили обучение
+            fig3.add_trace(
+                go.Scatter(
+                    x=monthly_data['Месяц'],
+                    y=monthly_data['Завершили'],
+                    name='Завершили обучение',
+                    line=dict(color='#2ecc71', width=3)
+                )
+            )
             
-            fig3.add_trace(go.Scatter(
-                x=monthly_data['Месяц'],
-                y=monthly_data['Процент завершения'],
-                name='Процент завершения',
-                line=dict(color='#f39c12', width=3),
-                yaxis='y2'
-            )  # Закрывающая скобка для add_trace
+            # Третий график - Процент завершения (на второй оси Y)
+            fig3.add_trace(
+                go.Scatter(
+                    x=monthly_data['Месяц'],
+                    y=monthly_data['Процент завершения'],
+                    name='Процент завершения',
+                    line=dict(color='#f39c12', width=3),
+                    yaxis='y2'
+                )
+            )
             
+            # Настройки layout
             fig3.update_layout(
                 yaxis=dict(title='Количество сотрудников'),
-                yaxis2=dict(title='Процент завершения (%)', overlaying='y', side='right'),
+                yaxis2=dict(
+                    title='Процент завершения (%)',
+                    overlaying='y',
+                    side='right'
+                ),
                 hovermode='x unified'
             )
             
+            # Отображаем график
             st.plotly_chart(fig3, use_container_width=True)
-                           
         # Визуализация 4: Посещение МПП (для коммерческого департамента)
         if selected_dept == 'Коммерческий департамент' or selected_dept == 'Все':
             st.subheader("Посещение МПП (Коммерческий департамент)")
